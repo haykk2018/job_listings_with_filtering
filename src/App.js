@@ -3,19 +3,21 @@ import {FilterPanel} from "./components/FilterPanel";
 import {JobList} from "./components/JobList";
 import {useEffect} from "react";
 import data from "./mock/data.json"
-import {addJobs, store} from "./store";
+import {store} from "./store";
+import {createAction} from "@reduxjs/toolkit";
 
 function App() {
+    const ADD_JOBS = createAction('jobLIstAndFilter/ADD_JOBS');
 
     useEffect(
         () => {
-            store.dispatch(addJobs(data))
+            store.dispatch(ADD_JOBS(data))
         }
     )
     return <>
         <TheHeader/>
         <div className='container'>
-            <FilterPanel/>
+            {/*<FilterPanel/>*/}
             <JobList/>
         </div>
     </>
