@@ -1,6 +1,3 @@
-export const ADD_JOBS = 'ADD_JOBS';
+import {createAction} from "@reduxjs/toolkit";
 
-export const addJobs = (jobs) => ({
-  type: ADD_JOBS,
-  jobs,
-});
+export const addJobs = createAction('jobLIstAndFilter/ADD_JOBS');

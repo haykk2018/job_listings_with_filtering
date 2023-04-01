@@ -1,11 +1,9 @@
-export const selectAllPositions = (state) => state.positions;
-
 export const selectVisiblePositions = (state, filters = []) => {
-  if (filters.length === 0) return state.positions;
+  if (filters.length === 0) return state.jobs;
 
-  return state.positions.filter(pos => {
-    const posFilters = [].concat(pos.role, pos.level, ...pos.languages, ...pos.tools);
+  return state.jobs.filter(job => {
+    const jobFilters = [].concat(job.role, job.level, ...job.languages, ...job.tools);
 
-    return filters.every(filter => posFilters.includes(filter))
+    return filters.every(filter => jobFilters.includes(filter))
   })
 }

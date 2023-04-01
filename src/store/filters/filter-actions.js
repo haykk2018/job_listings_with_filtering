@@ -1,17 +1,6 @@
-export const ADD_FILTER = 'ADD_FILTER';
-export const REMOVE_FILTER = 'REMOVE_FILTER';
-export const CLEAR_FILTER = 'CLEAR_FILTER';
+import {createAction} from "@reduxjs/toolkit";
 
-export const addFilter = (filter) => ({
-  type: ADD_FILTER,
-  filter,
-})
+export const addFilter = createAction('jobLIstAndFilter/ADD_FILTER');
+export const removeFilter = createAction('jobLIstAndFilter/REMOVE_FILTER');
+export const clearFilter = createAction('jobLIstAndFilter/CLEAR_FILTER');
 
-export const removeFilter = (filter) => ({
-  type: REMOVE_FILTER,
-  filter,
-})
-
-export const clearFilter = {
-  type: CLEAR_FILTER,
-};

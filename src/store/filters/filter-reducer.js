@@ -1,22 +1,15 @@
-import {ADD_FILTER, REMOVE_FILTER, CLEAR_FILTER} from './filter-actions';
+import {createReducer} from "@reduxjs/toolkit";
+import {addFilter, clearFilter, removeFilter} from "./filter-actions";
 
-export const filterReducer = (state = [], action) => {
-  switch(action.type) {
-    case ADD_FILTER: {
-      if (state.includes(action.filter)) {
-        return state;
-      }
-      
-      return [...state, action.filter];
-    }
-    case REMOVE_FILTER: {
-      return state.filter(item => item !== action.filter);
-    }
-    case CLEAR_FILTER: {
-      return [];
-    }
-    default: {
-      return state;
-    }
-  }
-}
+export const filterReducer = createReducer([], (builder) => {
+    builder
+        .addCase(addFilter, (state, action) => {
+            state.filters = [...state.filters, action.payload]
+        })
+        .addCase(removeFilter, (state, action) => {
+            state.filters = state.filters.filter(el => el !== action.payload)
+        })
+        .addCase(clearFilter, (state) => {
+            state.filters = []
+        })
+})
